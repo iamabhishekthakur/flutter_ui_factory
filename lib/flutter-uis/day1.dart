@@ -251,64 +251,74 @@ class _HomePageState extends State<HomePage> {
                       "https://www.transparentpng.com/thumb/laptop/YmlelI-laptops-png-images-notebook-png-image-laptop.png",
                     ]
                         .map(
-                          (e) => Column(
-                            children: [
-                              Container(
-                                height: MediaQuery.of(context).size.width / 2.5,
-                                width: MediaQuery.of(context).size.width / 2.5,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(
-                                    20,
-                                  ),
-                                  color: backgroundColor,
-                                ),
-                                child: Image.network(
-                                  e,
-                                  height: 80,
-                                ),
+                          (e) => InkWell(
+                            onTap: () => Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const ProductDetailPage(),
                               ),
-                              const Row(
-                                mainAxisSize: MainAxisSize.min,
-                                children: [
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Laptop",
-                                        style: TextStyle(
-                                          fontSize: 15,
-                                          fontWeight: FontWeight.w500,
-                                          color: secondaryColor,
-                                        ),
-                                      ),
-                                      Text(
-                                        "\$132.00",
-                                        style: TextStyle(
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w700,
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                  SizedBox(
-                                    width: 50,
-                                  ),
-                                  Icon(
-                                    Icons.star,
-                                    size: 15,
-                                    color: Colors.deepOrange,
-                                  ),
-                                  Text(
-                                    "4.9",
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w700,
+                            ),
+                            child: Column(
+                              children: [
+                                Container(
+                                  height:
+                                      MediaQuery.of(context).size.width / 2.5,
+                                  width:
+                                      MediaQuery.of(context).size.width / 2.5,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(
+                                      20,
                                     ),
+                                    color: backgroundColor,
                                   ),
-                                ],
-                              )
-                            ],
+                                  child: Image.network(
+                                    e,
+                                    height: 80,
+                                  ),
+                                ),
+                                const Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          "Laptop",
+                                          style: TextStyle(
+                                            fontSize: 15,
+                                            fontWeight: FontWeight.w500,
+                                            color: secondaryColor,
+                                          ),
+                                        ),
+                                        Text(
+                                          "\$132.00",
+                                          style: TextStyle(
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(
+                                      width: 50,
+                                    ),
+                                    Icon(
+                                      Icons.star,
+                                      size: 15,
+                                      color: Colors.deepOrange,
+                                    ),
+                                    Text(
+                                      "4.9",
+                                      style: TextStyle(
+                                        fontSize: 14,
+                                        fontWeight: FontWeight.w700,
+                                      ),
+                                    ),
+                                  ],
+                                )
+                              ],
+                            ),
                           ),
                         )
                         .toList(),
@@ -318,6 +328,133 @@ class _HomePageState extends State<HomePage> {
             )
           ],
         ),
+      ),
+    );
+  }
+}
+
+class ProductDetailPage extends StatelessWidget {
+  const ProductDetailPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: backgroundColor,
+      appBar: AppBar(
+        backgroundColor: backgroundColor,
+        leading: Container(
+          height: 40,
+          width: 40,
+          margin: const EdgeInsets.only(
+            left: 10,
+          ),
+          alignment: Alignment.center,
+          decoration: const BoxDecoration(
+            shape: BoxShape.circle,
+            color: focusColor,
+          ),
+          child: const Icon(
+            Icons.arrow_back_ios,
+            size: 18,
+          ),
+        ),
+        actions: [
+          Container(
+            height: 40,
+            width: 40,
+            margin: const EdgeInsets.only(
+              left: 10,
+            ),
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: focusColor,
+            ),
+            child: const Icon(
+              Icons.favorite,
+              size: 18,
+              color: Colors.red,
+            ),
+          ),
+          Container(
+            height: 40,
+            width: 40,
+            margin: const EdgeInsets.only(
+              left: 10,
+            ),
+            alignment: Alignment.center,
+            decoration: const BoxDecoration(
+              shape: BoxShape.circle,
+              color: focusColor,
+            ),
+            child: const Icon(
+              Icons.share,
+              size: 18,
+            ),
+          ),
+          const SizedBox(
+            width: 20,
+          ),
+        ],
+      ),
+      body: Column(
+        children: [
+          Image.network(
+            "https://static.vecteezy.com/system/resources/thumbnails/008/476/519/small/modern-laptop-3d-illustration-png.png",
+            width: MediaQuery.of(context).size.width,
+          ),
+          Expanded(
+            child: Container(
+              padding: const EdgeInsets.all(20),
+              decoration: const BoxDecoration(
+                color: focusColor,
+                borderRadius: BorderRadius.vertical(
+                  top: Radius.circular(
+                    20,
+                  ),
+                ),
+              ),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        "Xbox series X",
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineMedium
+                            ?.copyWith(
+                              fontWeight: FontWeight.bold,
+                            ),
+                      ),
+                      Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: const BoxDecoration(
+                          color: Colors.red,
+                          borderRadius: BorderRadius.all(
+                            Radius.circular(
+                              10,
+                            ),
+                          ),
+                        ),
+                        child: const Text(
+                          '% On sale',
+                          style: TextStyle(
+                            color: focusColor,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                ],
+              ),
+            ),
+          )
+        ],
       ),
     );
   }
